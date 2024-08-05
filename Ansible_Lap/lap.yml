@@ -1,0 +1,10 @@
+- name: install docker and Jenkins
+  hosts: D_J
+  gather_facts: true
+  become_user: root
+  roles:
+    - role: jenkins
+      tags: J
+
+    - role: docker
+      tags: D
