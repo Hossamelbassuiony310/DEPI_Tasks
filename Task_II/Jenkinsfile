@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('build'){
             steps{
-                sh"docker build -t hossam136/task_ii:${env.BUILD_NUMBER} -f docker/Dockerfile ."
+                sh"sudo docker compose -f docker-compose.yml up -d --build"
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'pass', usernameVariable: 'user')]) {
                  sh "docker login -u $user  -p $pass"
                  sh "docker push hossam136/task_ii:${env.BUILD_NUMBER}"
